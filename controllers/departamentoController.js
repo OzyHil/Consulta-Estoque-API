@@ -1,0 +1,24 @@
+const db = require("../config/db");
+
+exports.getAllDepartamentos = (req, res) => {
+  db.all("SELECT * FROM departamentos", [], (err, rows) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
+    res.json(rows);
+  });
+};
+
+exports.addDepartamento = (req, res) => {
+  const { codigo, nome } = req.body;
+  db.run(
+    `INSERT INTO departamentos (codigo, nome) VALUES (?, ?)`,
+    [codigo, nome],
+    function (err) {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+      res.json({ id: this.lastID });
+    }
+  );
+};
