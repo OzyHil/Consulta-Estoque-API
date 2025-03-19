@@ -6,6 +6,7 @@ const empresaRoutes = require("./routes/empresaRoutes");
 const centroDeCustoRoutes = require("./routes/centroDeCustoRoutes");
 const departamentoRoutes = require("./routes/departamentoRoutes");
 const transferenciaRoutes = require("./routes/transferenciaRoutes");
+const requisicoesRoutes = require("./routes/requisicaoRoutes");
 
 const app = express();
 const port = 3100;
@@ -19,6 +20,7 @@ app.use("/empresas", empresaRoutes);
 app.use("/centro_de_custos", centroDeCustoRoutes);
 app.use("/departamentos", departamentoRoutes);
 app.use("/transferencias", transferenciaRoutes);
+app.use("/requisicoes", requisicoesRoutes);
 
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
